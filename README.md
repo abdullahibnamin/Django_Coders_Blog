@@ -4,7 +4,7 @@
 <video src='/sample_videos/Coder-s-Blog-part-1.webm' controls> </video>
 
 # Part - 2
-<video src='sample_videos\Coder-s-Blog-part-2.mp4' width="180" />
+<video src='/sample_videos/Coder-s-Blog-part-2.mp4' controls> </video>
 
 # Part - 3
 <video src='sample_videos\Coder-s-Blog-Admin-Panel-part-3.mp4' width="180">
