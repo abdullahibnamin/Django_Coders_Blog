@@ -1,0 +1,42 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="pt-3">
+    <div class="shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+        <h3 class="my-2 text-center">My Profile</h3>
+
+
+        <div class="text-center mt-3">
+            <img src="https://static.vecteezy.com/system/resources/previews/007/033/146/original/profile-icon-login-head-icon-vector.jpg" class="rounded-circle mb-3"
+                alt="Profile Picture" width="150" height="150">
+            <p>
+                Username: {{ username }}
+                <br>
+                Email: {{ user_email }}
+                <br>
+                First Name: {{ user_firstname }}
+                <br>
+                Last Name: {{ user_lastname }}
+                <br>
+                Full Name: {{ user_fullname }}
+                <br>
+                Authenticated: {{ user_isauthenticated }}
+                <br>
+                Active: {{ user_isactive }}
+                <br>
+                Last Login: {{ user_lastlogin }} UTC
+                <br>
+                Joined Date: {{ user_date_joined }} UTC
+                <br>
+            </p>
+            <br>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock content %}

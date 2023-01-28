@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'index' %}">Coder's Blog</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto text-center">
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/' %} active {% endif %}" aria-current="page" href="{% url 'index' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/about' %} active {% endif %}" href="{% url 'about' %}">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/contact' %} active {% endif %}" href="{% url 'contact' %}">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/courses' %} active {% endif %}" href="{% url 'courses' %}">Courses</a>
+                </li>
+                {% if request.user.is_authenticated %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Profile
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'upload_blog' %}">Add Blog</a></li>
+                        <li><a class="dropdown-item" href="{% url 'upload_course' %}">Add Course</a></li>
+                        <li><a class="dropdown-item" href="{% url 'settings' %}">Settings</a></li>
+                        <li><a class="dropdown-item" href="{% url 'account_details' %}">Account Details</a></li>
+                        <li><a class="dropdown-item" href="{% url 'purchased_courses' %}">Purchased Courses</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                    </ul>
+                  </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/signup' %} active {% endif %}" href="{% url 'signup' %}">Signup</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/login' %} active {% endif %}" href="{% url 'login' %}">Login</a>
+                </li>
+                {% endif %}
+            </ul>
+
+            <form class="d-flex" role="search" action="{% url 'search_results' %}" method="get">
+                <input class="form-control me-2" type="search" placeholder="Search by keywords" aria-label="Search" name="query">
+                <button class="btn btn-outline-success" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+
+        </div>
+    </div>
+</nav>

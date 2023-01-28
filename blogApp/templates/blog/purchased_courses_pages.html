@@ -1,0 +1,32 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="m-3">
+    <h3 class="my-2 text-center">Courses
+        <hr>
+    </h3>
+    <div class="row">
+        {% for purchasedCourses in purchasedCourseObj %}
+        <div class="col-sm-6 col-md-4 mt-4">
+            <div class="card mx-auto" style="width: 18rem;">
+                <img src="{{ purchasedCourses.course_id.course_thumbnail.url }}" class="card-img-top p-2"
+                    alt="course thumbnail image">
+                <div class="card-body">
+                    <h5 class="card-title">{{ purchasedCourses.course_id.title }}</h5>
+                    <p class="card-text">{{ purchasedCourses.course_id.shortdesc|truncatewords:8 }}</p>
+
+                    <div class="d-flex justify-content-between">
+                        <a href="{{ purchasedCourses.course_id.course_file.url }}" class="btn btn-success" download>
+                            <i class="fa-solid fa-download pe-1"></i>Download</a>
+                        <a href="{% url 'course_info' purchasedCourses.course_id.id %}" class="btn btn-success">
+                            <i class="fa-solid fa-circle-info pe-1"></i>Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}

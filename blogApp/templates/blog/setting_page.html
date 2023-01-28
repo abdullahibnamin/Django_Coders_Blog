@@ -1,0 +1,52 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="pt-5">
+
+    {% if not is_stripe_connected %}
+    <div class="shadow-sm p-4 mb-5 bg-body-tertiary rounded">
+
+        <h4 class="my-3 text-center">Connect Stripe Account</h4>
+
+        <form action="{% url 'stripe_connect' %}" method="POST">
+            {% csrf_token %}
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <button type="submit" class="btn btn-info my-3">Connect</button>
+            </div>
+        </form>
+
+    </div>
+
+    {% endif %}
+
+
+    <div class="shadow-sm p-4 mb-5 bg-body-tertiary rounded">
+
+        {% if messages %}
+        {% for message in messages %}
+        {% if message.tags %}
+        <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+            {{message}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+
+        <h4 class="my-3 text-center">Change Password</h4>
+
+        <form action="{% url 'settings' %}" method="POST">
+            {% csrf_token %}
+            {% for f in form %}
+            {{f.label_tag}} {{f}}
+            {% endfor %}
+            <button type="submit" class="btn btn-info my-3">Save</button>
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

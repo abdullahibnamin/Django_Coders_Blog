@@ -1,0 +1,45 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="pt-3">
+    <div class="shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+        <h3 class="my-2 text-center">Thank For Payment</h3>
+
+        <div class="text-center">
+            <p>
+                Payment ID: {{ payment_id }}
+                <br>
+                Email: {{ email }}
+                <br>
+                User Name: {{ username }}
+                <br>
+                Course Title: {{ course_title }}
+                <br>
+                Amount: {{ amount }}
+                <br>
+                Payment Status: {{ status }}
+                <br>
+                Purchased Datetime: {{ datetime }}
+                <br>
+            </p>
+            <br>
+
+            <form action="{% url 'download_file' payment_id %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="pid" value="{{ payment_id }}">
+                <input type="hidden" name="uname" value="{{ username }}">
+                <input type="hidden" name="cid" value="{{ client_reference_id }}">
+                <input type="hidden" name="status" value="{{ status }}">
+                <button class="btn btn-secondary" type="submit">Download File</button>
+            </form>
+
+            <a class="btn btn-secondary mt-3" href="{% url 'courses' %}">Back</a>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock content %}

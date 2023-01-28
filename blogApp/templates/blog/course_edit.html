@@ -1,0 +1,45 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="mt-5">
+    <form action="{% url 'edit_course' course.id %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div>
+            <label for="titleLabel" class="form-label">Title</label>
+            <input type="text" class="form-control" id="titleLabel" name="editedCourseTitle" value="{{ course.title }}" required>
+
+            <label for="shortDescLabel" class="form-label">Short Description</label>
+            <input type="text" class="form-control" id="shortDescLabel" name="editedCourseShortDesc" value="{{ course.shortdesc }}"
+                required>
+
+            <label for="courseImgLabel" class="form-label">Thumbnail</label>
+            <input type="file" class="form-control" id="courseImgLabel" name="editedCourseThumbnail" required>
+
+
+            <div class="row">
+                <div class="col">
+                    <label for="priceLabel" class="form-label">Price($)</label>
+                    <input type="number" min="0" class="form-control" id="priceLabel" name="editedCoursePrice" value="{{ course.price }}"
+                        required>
+                </div>
+                <div class="col">
+                    <label for="formFile" class="form-label">Course File (Only .zip file)</label>
+                    <input class="form-control" type="file" id="formFile" name="editedCourseZipFile" required>
+                </div>
+            </div>
+
+
+            <label for="contentLabel" class="form-label mt-2">Content</label>
+            <textarea id="descLabel" name="editedCourseContent">{{ course.content }}</textarea>
+        </div>
+
+        <div class="text-end mt-3">
+            <button type="submit" name="submit" class="btn btn-primary">Save Changes</button>
+        </div>
+
+    </form>
+</div>
+
+
+{% endblock content %}

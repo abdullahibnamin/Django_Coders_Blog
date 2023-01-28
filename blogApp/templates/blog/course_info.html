@@ -1,0 +1,58 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="pt-5">
+    <div class="shadow-sm p-4 mb-5 bg-body-tertiary rounded">
+
+        <div class="d-flex justify-content-center">
+            <img src="{{ coursedetail.course_thumbnail.url }}" class="img-fluid img-thumbnail w-25" alt="...">
+        </div>
+
+        <h3 class="text-success text-center my-2">Instructor: {{ coursedetail.user }}</h3>
+
+        <h3 class="text-center my-3">{{coursedetail.title}}</h3>
+
+        <h4>Short Description</h4>
+
+        <p>{{ coursedetail.shortdesc }}</p>
+
+        <h4>Content</h4>
+
+        <p>{{ coursedetail.content|safe }}</p>
+
+
+        <div class="my-2 text-center">
+            {% if coursedetail.price == "0.0" %}
+            <h2>🎉 FREE 🎉</h2>
+            {% else %}
+            <h2>Price: {{ coursedetail.price }} $</h2>
+            {% endif %}
+        </div>
+
+
+        <div class="d-flex justify-content-between">
+            {% if coursedetail.price == "0.0" %}
+            <a href="{{ coursedetail.course_file.url }}" class="btn btn-success"><i
+                    class="fa-solid fa-download pe-1"></i>Download now</a>
+            {% else %}
+            <form action="{% url 'buy_course' coursedetail.id %}" method="post">
+                {% csrf_token %}
+                <button class="btn btn-success">
+                    <i class="fa-solid fa-cart-shopping pe-1"></i>Buy now</button>
+            </form>
+            {% endif %}
+        </div>
+
+    </div>
+
+    <div class="fb-like" data-href="{{ request.build_absolute_uri }}" data-width="" data-layout="button_count"
+        data-action="like" data-size="large" data-share="true">
+    </div>
+
+    <h5 class="my-3">Comments</h5>
+
+    <div class="fb-comments" data-href="{{ request.build_absolute_uri }}" data-width="" data-numposts="5"></div>
+
+</div>
+{% endblock %}

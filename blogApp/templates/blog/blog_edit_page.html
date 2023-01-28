@@ -1,0 +1,21 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="mt-5">
+    <form action="{% url 'edit_blog' userBlog.id %}" method="post">
+        {% csrf_token %}
+        <div>
+            <label for="titleLabel" class="form-label">Title</label>
+            <input type="text" class="form-control" id="titleLabel" name="editedBlogTitle" value="{{userBlog.title}}">
+
+            <label for="descLabel" class="form-label mt-2">Description</label>
+            <textarea id="descLabel" name="editedBlogDesc">{{userBlog.desc}}</textarea>
+        </div>
+        <div class="text-end mt-3">
+            <button type="submit" name="submit" class="btn btn-primary">Save Changes</button>
+        </div>
+    </form>
+</div>
+
+{% endblock content %}

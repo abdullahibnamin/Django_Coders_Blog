@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon-16x16.png' %}">
+    
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LW0QNJSJ2D"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-LW0QNJSJ2D');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="A programming blog website. where you will get programming tutorials, DSA, CS subjects, free and paid courses, guidelines and many more things">
+    <title>Coder's Blog</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/vs2015.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.css" />
+</head>
+
+<body>
+
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v15.0"
+        nonce="HbcDvaL3">
+        </script>
+
+    <section>
+        <div>
+            {% include 'blog/navigation_bar.html' %}
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            {% block content %}
+            {% endblock content %}
+        </div>
+        <div>
+            {% include 'blog/footer.html' %}
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/js/all.min.js"></script>
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
+
+    <script>hljs.highlightAll()</script>
+
+    <script>
+        hljs.addPlugin(new CopyButtonPlugin());
+    </script>
+
+    <script type="text/javascript">
+        tinymce.init({
+            height: 600,
+            selector: '#descLabel',
+            plugins: [
+                'advlist autolink link image lists charmap print preview hr anchor pagebreak',
+                'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+                'table emoticons template paste help codesample'
+            ],
+            toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | ' +
+                'bullist numlist outdent indent | link image | print preview media fullscreen | ' +
+                'forecolor backcolor emoticons codesample | help',
+            menu: {
+                file: { title: 'File', items: 'newdocument restoredraft | preview | print ' },
+                edit: { title: 'Edit', items: 'undo redo | cut copy paste | selectall | searchreplace' },
+                view: { title: 'View', items: 'code | visualaid visualchars visualblocks | spellchecker | preview fullscreen' },
+                insert: { title: 'Insert', items: 'image link media template codesample inserttable pageembed | charmap emoticons hr | pagebreak nonbreaking anchor toc | insertdatetime' },
+                format: { title: 'Format', items: 'bold italic underline strikethrough superscript subscript codeformat | formats blockformats fontformats fontsizes align lineheight | forecolor backcolor | removeformat' },
+                tools: { title: 'Tools', items: 'spellchecker spellcheckerlanguage | code wordcount' },
+                table: { title: 'Table', items: 'inserttable | cell row column | tableprops deletetable' },
+                help: { title: 'Help', items: 'help' }
+            },
+            menubar: 'favs file edit view insert format tools table help',
+        });
+    </script>
+
+</body>
+
+</html>
