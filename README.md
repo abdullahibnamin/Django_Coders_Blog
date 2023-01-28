@@ -5,7 +5,7 @@
 
 # Part - 2
 <video width="320" height="240" controls>
-  <source src="sample_videos\Coder-s-Blog-part-2.mp4" type="video/mp4">
+  <source src="\sample_videos\Coder-s-Blog-part-2.mp4" type="video/mp4">
 </video>
 <video src='sample_videos\Coder-s-Blog-part-2.mp4' controls> </video>
 
