@@ -1,7 +1,7 @@
 # Coder's Blog (Django)
 
 # Part - 1
-<video src='sample_videos\Coder-s-Blog-part-1.webm' width="180">
+<video src='sample_videos\Coder-s-Blog-part-1.webm' width="180" />
 
 # Part - 2
 <video src='sample_videos\Coder-s-Blog-part-2.mp4' width="180">
