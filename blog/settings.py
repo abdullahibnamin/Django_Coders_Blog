@@ -201,7 +201,3 @@ STRIPE_API_KEY = 'sk_test_51MSzBNIO3w4jgP1a1Z6kUnzLDntWylMrr6uBU7gT2ek94TFL6JJ95
 
 DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
 DBBACKUP_STORAGE_OPTIONS = {'location': 'backup/'}
-
-
-
-

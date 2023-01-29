@@ -45,8 +45,3 @@ urlpatterns = [
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
-
-# https://stackoverflow.com/questions/45483417/what-is-doing-str-function-in-django
-# https://www.geeksforgeeks.org/how-to-add-views-dynamically-and-store-data-in-arraylist-in-android/
-# https://www.youtube.com/watch?v=VqozcIuU9jI
-# 2: 26: 03
